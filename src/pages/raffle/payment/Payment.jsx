@@ -31,7 +31,8 @@ function Payment() {
       setData(response.data.result);
       setPhoneNum(response.data.result.userPhoneNumber);
     } catch (e) {
-      // console.log(e);
+      alert('응모 시간이 지났습니다 :(');
+      navigate(`/raffle/${id}`);
     }
   };
 
