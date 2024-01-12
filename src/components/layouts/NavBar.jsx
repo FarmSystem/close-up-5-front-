@@ -35,7 +35,7 @@ function NavBar() {
         <S.NavTitle>당첨 확인</S.NavTitle>
       </S.NavTab>
 
-      <S.NavTab to="/setting">
+      <S.NavTab to="/mypage">
         <S.StyledIoIosMore />
         <S.NavTitle>설정</S.NavTitle>
       </S.NavTab>
