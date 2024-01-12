@@ -14,6 +14,9 @@ import RafflePayment from './pages/raffle/payment/Payment.jsx';
 import RafflePaymentComplete from './pages/raffle/payment/complete/Complete.jsx';
 import MyPage from './pages/myPage/MyPage.jsx';
 import WinningConfirm from './pages/winningConfirm/detail/Detail.jsx'
+import LogIn from './pages/logIn/LogIn.jsx';
+import UserSignUp from './pages/signUp/UserSignUp.jsx';
+import CreatorSignUp from './pages/signUp/CreatorSignUp.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,12 +28,24 @@ const router = createBrowserRouter([
         element: <Landing />,
       },
       {
+        path: '/login',
+        element: <LogIn />,
+      },
+      {
+        path: '/usersignup',
+        element: <UserSignUp />,
+      },
+      {
+        path: '/creatorsignup',
+        element: <CreatorSignUp />,
+      },
+      {
         path: '/winningConfirm',
         element: <WinningConfirmBox />,
       },
       {
-        path: '/mypage',
-        element: <MyPage />,
+        path: '/setting',
+        element: <Setting />,
       },
       {
         path: '/raffle',
@@ -49,11 +64,11 @@ const router = createBrowserRouter([
         element: <RaffleWritingComplete />,
       },
       {
-        path: '/raffle/:id',
+        path: '/raffle/detail',
         element: <RaffleDetail />,
       },
       {
-        path: '/raffle/:id/payment',
+        path: '/raffle/detail/payment',
         element: <RafflePayment />,
       },
       {
@@ -63,6 +78,10 @@ const router = createBrowserRouter([
       {
         path: '/winningConfirm/detail/:id',
         element: <WinningConfirm/>,
+      },
+      {
+        path: '/winningConfirm/detail',
+        element: <RaffleWinningConfirmDetail />,
       },
     ],
   },
