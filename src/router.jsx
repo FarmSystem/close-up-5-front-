@@ -12,6 +12,7 @@ import RaffleDetail from './pages/raffle/detail/Detail.jsx';
 import RaffleWinningConfirmDetail from './pages/winningConfirm/detail/Detail.jsx';
 import RafflePayment from './pages/raffle/payment/Payment.jsx';
 import RafflePaymentComplete from './pages/raffle/payment/complete/Complete.jsx';
+import MyPage from './pages/myPage/MyPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,8 +28,8 @@ const router = createBrowserRouter([
         element: <WinningConfirmBox />,
       },
       {
-        path: '/setting',
-        element: <Setting />,
+        path: '/mypage',
+        element: <MyPage />,
       },
       {
         path: '/raffle',
