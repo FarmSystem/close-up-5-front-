@@ -1,27 +1,57 @@
-import React, { useState } from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from 'react';
 import * as S from './style';
+import axios from '../../../api/axios';
+import { Link } from 'react-router-dom'; 
 
 function Box() {
-  const [activeButton, setActiveButton] = useState('팔로잉');
+  const [raffleProducts, setRaffleProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleButtonClick = (buttonType) => {
-    console.log('Button clicked:', buttonType);
-    setActiveButton(buttonType);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          '/user/raffle-products?page=1&size=10'
+        );
+        console.log(response.data.result.content);
+        setRaffleProducts(response.data.result.content);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false); // Set loading to false when data fetching is complete
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <S.BoxWrapper>
       <S.RaffleTitle>래플 목록</S.RaffleTitle>
-      <S.RaffleMenu>
-      <SubTitle1 onClick={() => handleSubTitleClick('팔로잉')}>팔로잉</SubTitle1>
-        <SubTitle2 onClick={() => handleSubTitleClick('전체')}>전체</SubTitle2>
-      </S.RaffleMenu>
       <S.RaffleView>
-        <S.RaffleViewTitle>
-          {activeButton === '팔로잉'
-            ? '회원님의 팔로잉 래플 목록'
-            : '회원님의 전체 래플 목록'}
-        </S.RaffleViewTitle>
+        <S.RaffleViewTitle>전체 래플 목록</S.RaffleViewTitle>
+        <S.RaffleLine> </S.RaffleLine>
+        {loading ? (
+          <p>Loading…</p>
+        ) : (
+          raffleProducts.map(product => (
+            <S.RaffleContents key={product.raffleProductId}>
+              <Link to={`/raffle/${product.raffleProductId}`}></Link>
+              <S.RaffleContentsImages src={product.raffleProductThumbnail} />
+              <S.RaffleContentslist>
+                <S.RaffleContentsTitle>
+                  {product.raffleProductTitle}
+                </S.RaffleContentsTitle>
+                <S.RaffleContentsDate>
+                  {product.startDate} ~ {product.endDate}
+                </S.RaffleContentsDate>
+                <S.RaffleContentsPrice>
+                  {product.raffleProductPrice}Point
+                </S.RaffleContentsPrice>
+              </S.RaffleContentslist>
+            </S.RaffleContents>
+          ))
+        )}
       </S.RaffleView>
     </S.BoxWrapper>
   );
