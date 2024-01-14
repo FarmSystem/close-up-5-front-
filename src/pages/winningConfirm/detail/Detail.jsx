@@ -1,10 +1,8 @@
-import * as S from './style';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // import Header from '../../../components/raffleApplyment/header/Header';
 import RaffleConfirmDetail from '../../../components/raffleConfirmDetail/Detail';
-import ProfileImg from '../../../assets/images/raffleApplyment/profile.png';
 
 // api
 import axios from '../../../api/axios';
@@ -28,11 +26,12 @@ function Detail() {
 
   return (
     <>
+      <Header title={'축하드립니다. 래플에 당첨되셨습니다.'} />
       {data && (
         <RaffleConfirmDetail
           winningInfo={data.winningInfo} //
           raffleCreateDate={data.raffleCreateDate}
-          endDraffleProductStartDateate={data.raffleProductStartDate}
+          raffleProductStartDate={data.raffleProductStartDate}
           raffleProductEndDate={data.raffleProductEndDate}
           raffleProductTitle={data.raffleProductTitle}
           raffleProductThumbnailUrl={data.raffleProductThumbnailUrl}
