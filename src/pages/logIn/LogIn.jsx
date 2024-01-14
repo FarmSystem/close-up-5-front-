@@ -8,7 +8,7 @@ import axios from '../../../src/api/axios';
 
 function LogIn() {
   const handleButtonClick = () => {
-    const url = 'http://172.30.1.18:8080/oauth2/authorization/kakao';
+    const url = 'http://localhost:8080/oauth2/authorization/kakao';
     window.location.href = url;
   };
 
