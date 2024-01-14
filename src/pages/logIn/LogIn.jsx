@@ -12,7 +12,6 @@ function LogIn() {
     window.location.href = url;
   };
 
-
   return (
     <S.LogInWrapper style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <div style={{ width: 200, height: 9, left: 80, top: -100, position: 'absolute', textAlign: 'center', color: 'white', fontSize: 30, fontFamily: 'Karla', fontWeight: '700', lineHeight: 20, wordWrap: 'break-word' }}>CLOSEUP</div>
@@ -31,14 +30,7 @@ function LogIn() {
       <div style={{ width: 260, height: 16, left: 21, top: 472, position: 'absolute', textAlign: 'center', color: '#3D2225', fontSize: 16, fontFamily: 'Noto Sans KR', fontWeight: '700', wordWrap: 'break-word' }}>카카오톡으로 간편로그인</div>
     </Link>
 
-        {/* closeup으로 회원가입 */}
-        <Link to="/usersignup"> 
-          <div style={{ width: 279, height: 37.24, left: 2, top: 503, position: 'absolute', background: '#BDAEF9', borderRadius: 10 }}>
-            <div style={{ width: 279, height: 37.24, left: 0, top: 0, position: 'absolute', borderRadius: 25 }} />
-          </div>
-          <div style={{ width: 260, height: 19, left: 11, top: 516, position: 'absolute', textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Noto Sans KR', fontWeight: '700', wordWrap: 'break-word' }}>CLOSE UP 회원가입</div>
-        </Link>
-
+      
       </div>
     </S.LogInWrapper>
   );
