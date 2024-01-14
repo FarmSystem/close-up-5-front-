@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Header from '../../../components/raffleConfirmDetail/header/Header';
 
 // import Header from '../../../components/raffleApplyment/header/Header';
 import RaffleConfirmDetail from '../../../components/raffleConfirmDetail/Detail';
