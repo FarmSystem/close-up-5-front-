@@ -14,6 +14,7 @@ import RafflePayment from './pages/raffle/payment/Payment.jsx';
 import LogIn from './pages/logIn/LogIn.jsx';
 import UserSignUp from './pages/signUp/UserSignUp.jsx';
 import CreatorSignUp from './pages/signUp/CreatorSignUp.jsx';
+import MyPage from './pages/myPage/MyPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: '/winningConfirm/detail',
         element: <RaffleWinningConfirmDetail />,
+      },
+      {
+        path: '/mypage',
+        element: <MyPage />,
       },
     ],
   },
