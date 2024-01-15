@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './style';
 import axios from '../../api/axios';
+import ProfileDefault from '../../assets/images/raffleApplyment/defaultCreatorProfile.png';
 
 function MyPage() {
   const [data, setData] = useState();
 
   useEffect(() => {
+    fetchData();
     const jquery = document.createElement('script');
     jquery.src = 'http://code.jquery.com/jquery-1.12.4.min.js';
     const iamport = document.createElement('script');
@@ -18,9 +20,19 @@ function MyPage() {
     };
   }, []);
 
-  const onClick5000Point = async () => {
+  const fetchData = async () => {
     try {
-      const amount = 5000;
+      const response = await axios.get(`user/profile`);
+      console.log(response);
+      setData(response.data.result);
+    } catch (e) {
+      // console.log(e);
+    }
+  };
+
+  const onClickChargePoint = async amount => {
+    console.log(amount);
+    try {
       const response = await axios.post(`/user/point-charge?amount=${amount}`);
       setData(response.data.result);
       requestPay(
@@ -63,12 +75,14 @@ function MyPage() {
             const response = axios.post(`/user/verifyIamport`, data);
 
             console.log(response);
+            window.location.reload();
           } catch (e) {
             alert(e);
           }
         } else {
           alert('결재 실패');
           alert(rsp.error_msg);
+          window.location.reload();
           console.log(rsp);
         }
       }
@@ -77,7 +91,39 @@ function MyPage() {
 
   return (
     <S.MyPageWrapper>
-      <S.Button onClick={onClick5000Point}>5000원</S.Button>
+      <S.MyPageTitle>MY PAGE</S.MyPageTitle>
+
+      {data && (
+        <>
+          <S.MyPageHeader>
+            <S.MyPageProfileImg src={ProfileDefault} />
+            <S.MyPageNameAndPoint>
+              <S.MyPageProfileName>{data.creatorName}</S.MyPageProfileName>
+              <S.MyPagePoint>포인트: {data.totalPoint}원</S.MyPagePoint>
+            </S.MyPageNameAndPoint>
+          </S.MyPageHeader>
+
+          <S.MyPageContent>
+            <S.MyPageContentTitle>포인트 충전</S.MyPageContentTitle>
+            <S.ButtonWrapper>
+              <S.Button onClick={() => onClickChargePoint(5000)}>
+                5000원
+              </S.Button>
+              <S.Button onClick={() => onClickChargePoint(10000)}>
+                10000원
+              </S.Button>
+            </S.ButtonWrapper>
+            <S.ButtonWrapper>
+              <S.Button onClick={() => onClickChargePoint(20000)}>
+                20000원
+              </S.Button>
+              <S.Button onClick={() => onClickChargePoint(50000)}>
+                50000원
+              </S.Button>
+            </S.ButtonWrapper>
+          </S.MyPageContent>
+        </>
+      )}
     </S.MyPageWrapper>
   );
 }
