@@ -8,7 +8,7 @@ import axios from '../../../src/api/axios';
 
 function LogIn() {
   const handleButtonClick = () => {
-    const url = 'http://172.30.1.18:8080/oauth2/authorization/kakao';
+    const url = 'http://localhost:8080/oauth2/authorization/kakao';
     window.location.href = url;
   };
 
@@ -29,8 +29,6 @@ function LogIn() {
       </div>
       <div style={{ width: 260, height: 16, left: 21, top: 472, position: 'absolute', textAlign: 'center', color: '#3D2225', fontSize: 16, fontFamily: 'Noto Sans KR', fontWeight: '700', wordWrap: 'break-word' }}>카카오톡으로 간편로그인</div>
     </Link>
-
-      
       </div>
     </S.LogInWrapper>
   );
