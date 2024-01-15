@@ -99,7 +99,7 @@ function Writing() {
           <TextDate getValue={setEndValue}/>
         </S.OneLineWrapper>
         <S.OneLineWrapper>
-          <TextSmallLabel value="사진 미첨부 시 자신의 프로필 사진으로 게시됩니다." />
+          <TextSmallLabel value="응모 마감은 종료일 자정 12시, 당첨자 발표는 종료일 다음날 오후 12시입니다." />
         </S.OneLineWrapper>
       </S.OneContentWrapper>
 
