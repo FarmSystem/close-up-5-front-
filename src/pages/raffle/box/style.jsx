@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-
+import { Link } from 'react-router-dom';
 export const BoxWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -103,4 +103,7 @@ export const Button = styled.div`
     background-color: #fff;
     color: #000;
   }
+`;
+
+export const StyledLink = styled(Link)`
 `;

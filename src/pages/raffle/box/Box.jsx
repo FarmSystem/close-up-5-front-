@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import * as S from './style';
-import axios from '../../../api/axios';
-import { Link } from 'react-router-dom'; 
+import axios from '../../../api/axios'; 
+
 
 function Box() {
   const [raffleProducts, setRaffleProducts] = useState([]);
@@ -35,8 +35,9 @@ function Box() {
           <p>Loading…</p>
         ) : (
           raffleProducts.map(product => (
+            // eslint-disable-next-line react/jsx-key
+            <S.StyledLink to={`/raffle/${product.raffleProductId}`}>
             <S.RaffleContents key={product.raffleProductId}>
-              <Link to={`/raffle/${product.raffleProductId}`}></Link>
               <S.RaffleContentsImages src={product.raffleProductThumbnail} />
               <S.RaffleContentslist>
                 <S.RaffleContentsTitle>
@@ -50,6 +51,7 @@ function Box() {
                 </S.RaffleContentsPrice>
               </S.RaffleContentslist>
             </S.RaffleContents>
+            </S.StyledLink>
           ))
         )}
       </S.RaffleView>
