@@ -36,4 +36,13 @@ export const SubHeaderTitle = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 20px; /* 166.667% */
-`
+`;
+
+export const ColorHeader = styled.div`
+  color: #7D3AF1;
+  font-size: 30px;
+  font-family: Karla;
+  font-weight: 700;
+  line-height: 20px;
+  word-wrap: break-word;
+`;
