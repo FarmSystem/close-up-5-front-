@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as S from './style';
 import axios from '../../api/axios';
 import ProfileDefault from '../../assets/images/raffleApplyment/defaultCreatorProfile.png';
-
 function MyPage() {
   const [data, setData] = useState();
-
   useEffect(() => {
     fetchData();
     const jquery = document.createElement('script');
@@ -19,7 +17,6 @@ function MyPage() {
       document.head.removeChild(iamport);
     };
   }, []);
-
   const fetchData = async () => {
     try {
       const response = await axios.get(`user/profile`);
@@ -29,7 +26,6 @@ function MyPage() {
       // console.log(e);
     }
   };
-
   const onClickChargePoint = async amount => {
     console.log(amount);
     try {
@@ -44,11 +40,9 @@ function MyPage() {
       console.log(e);
     }
   };
-
   const requestPay = (merchantId, chargePoint) => {
     const IMP = window.IMP;
     IMP.init('imp31818680');
-
     IMP.request_pay(
       {
         pg: 'html5_inicis',
@@ -70,10 +64,8 @@ function MyPage() {
             imp_uid: rsp.imp_uid,
             merchantId: rsp.merchant_uid,
           };
-
           try {
             const response = axios.post(`/user/verifyIamport`, data);
-
             console.log(response);
             window.location.reload();
           } catch (e) {
@@ -88,11 +80,9 @@ function MyPage() {
       }
     );
   };
-
   return (
     <S.MyPageWrapper>
       <S.MyPageTitle>MY PAGE</S.MyPageTitle>
-
       {data && (
         <>
           <S.MyPageHeader>
@@ -102,7 +92,6 @@ function MyPage() {
               <S.MyPagePoint>포인트: {data.totalPoint}원</S.MyPagePoint>
             </S.MyPageNameAndPoint>
           </S.MyPageHeader>
-
           <S.MyPageContent>
             <S.MyPageContentTitle>포인트 충전</S.MyPageContentTitle>
             <S.ButtonWrapper>
@@ -127,5 +116,4 @@ function MyPage() {
     </S.MyPageWrapper>
   );
 }
-
 export default MyPage;

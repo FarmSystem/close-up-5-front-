@@ -11,14 +11,12 @@ import RaffleWritingComplete from './pages/raffleWriting/complete/Complete.jsx';
 import RaffleDetail from './pages/raffle/detail/Detail.jsx';
 import RaffleWinningConfirmDetail from './pages/winningConfirm/detail/Detail.jsx';
 import RafflePayment from './pages/raffle/payment/Payment.jsx';
-import LogIn from './pages/logIn/LogIn.jsx';
-import UserSignUp from './pages/signUp/UserSignUp.jsx';
-import CreatorSignUp from './pages/signUp/CreatorSignUp.jsx';
+import RafflePaymentComplete from './pages/raffle/payment/complete/Complete.jsx';
 import MyPage from './pages/myPage/MyPage.jsx';
-import WinningConfirm from './pages/winningConfirm/detail/Detail.jsx'
 import LogIn from './pages/logIn/LogIn.jsx';
 import UserSignUp from './pages/signUp/UserSignUp.jsx';
 import CreatorSignUp from './pages/signUp/CreatorSignUp.jsx';
+import WinningConfirm from './pages/winningConfirm/detail/Detail.jsx'
 
 
 const router = createBrowserRouter([
@@ -26,6 +24,18 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
+      {
+        path: '/',
+        element: <Landing />,
+      },
+      {
+        path: '/winningConfirm',
+        element: <WinningConfirmBox />,
+      },
+      {
+        path: '/mypage',
+        element: <MyPage />,
+      },
       {
         path: '/',
         element: <Landing />,
