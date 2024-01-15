@@ -11,7 +11,9 @@ import RaffleWritingComplete from './pages/raffleWriting/complete/Complete.jsx';
 import RaffleDetail from './pages/raffle/detail/Detail.jsx';
 import RaffleWinningConfirmDetail from './pages/winningConfirm/detail/Detail.jsx';
 import RafflePayment from './pages/raffle/payment/Payment.jsx';
-import RafflePaymentComplete from './pages/raffle/payment/complete/Complete.jsx';
+import LogIn from './pages/logIn/LogIn.jsx';
+import UserSignUp from './pages/signUp/UserSignUp.jsx';
+import CreatorSignUp from './pages/signUp/CreatorSignUp.jsx';
 import MyPage from './pages/myPage/MyPage.jsx';
 import WinningConfirm from './pages/winningConfirm/detail/Detail.jsx'
 import LogIn from './pages/logIn/LogIn.jsx';
@@ -85,12 +87,8 @@ const router = createBrowserRouter([
         element: <RaffleWinningConfirmDetail />,
       },
       {
-        path: '/raffle/payment/complete',
-        element: <RafflePaymentComplete />,
-      },
-      {
-        path: '/winningConfirm/detail/:id',
-        element: <WinningConfirm/>,
+        path: '/mypage',
+        element: <MyPage />,
       },
     ],
   },
