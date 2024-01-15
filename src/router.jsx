@@ -16,8 +16,7 @@ import MyPage from './pages/myPage/MyPage.jsx';
 import LogIn from './pages/logIn/LogIn.jsx';
 import UserSignUp from './pages/signUp/UserSignUp.jsx';
 import CreatorSignUp from './pages/signUp/CreatorSignUp.jsx';
-import WinningConfirm from './pages/winningConfirm/detail/Detail.jsx'
-
+import WinningConfirm from './pages/winningConfirm/detail/Detail.jsx';
 
 const router = createBrowserRouter([
   {
@@ -77,11 +76,11 @@ const router = createBrowserRouter([
         element: <RaffleWritingComplete />,
       },
       {
-        path: '/raffle/detail',
+        path: '/raffle/:id',
         element: <RaffleDetail />,
       },
       {
-        path: '/raffle/detail/payment',
+        path: '/raffle/:id/payment',
         element: <RafflePayment />,
       },
       {
@@ -90,7 +89,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/winningConfirm/detail/:id',
-        element: <WinningConfirm/>,
+        element: <WinningConfirm />,
       },
       {
         path: '/winningConfirm/detail',
