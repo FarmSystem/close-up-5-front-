@@ -11,12 +11,15 @@ import ActiveWinningIcon from '../../assets/images/nav/active_winning.png';
 import ActiveSettingIcon from '../../assets/images/nav/active_setting.png';
 
 function NavBar() {
-  // const location = useLocation();
-  // const isLandingPage = location.pathname === '/';
-
-  // if (isLandingPage) {
-  //   return null;
-  // }
+  const location = useLocation();
+  const isLandingPage = location.pathname === '/';
+  const isLoginPage = location.pathname === '/login';
+  const isSignUpPage =
+    location.pathname === '/usersignup' ||
+    location.pathname === '/creatorsignup';
+  if (isLandingPage || isSignUpPage || isLoginPage) {
+    return null;
+  }
 
   return (
     <S.NavBarWrapper>
