@@ -8,6 +8,14 @@ function Box() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // URL에 토큰 있으면 안보이게
+    const urlParams = new URLSearchParams(window.location.search);
+    const tokenFromUrl = urlParams.get('accessToken');
+    if (tokenFromUrl) {
+      localStorage.setItem('accessToken', tokenFromUrl);
+      window.location.href = '/raffle';
+    }
+
     const fetchData = async () => {
       try {
         const response = await axios.get(
