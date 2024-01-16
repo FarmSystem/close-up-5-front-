@@ -66,6 +66,7 @@ function UserSignUp() {
     const tokenFromUrl = urlParams.get('accessToken');
     if (tokenFromUrl) {
       localStorage.setItem('accessToken', tokenFromUrl);
+      window.location.href = '/usersignup';
     }
   }, []);
 
