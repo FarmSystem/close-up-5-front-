@@ -76,7 +76,6 @@ export const RaffleContentsPrice = styled.div`
   color: #fff;
   font-size: 14px;
   line-height: 16px;
-  width: 30px; /* Fix typo: change 'line-width' to 'width' */
   padding: 5px 15px;
   display: inline-block;
   border-radius: 10px;
