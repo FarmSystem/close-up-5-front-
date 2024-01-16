@@ -26,7 +26,7 @@ function Detail() {
 
   return (
     <>
-      <Header title={'래플'} />
+      <Header title={'래플'} link={'/raffle'} />
       {data && (
         <RaffleDetail
           id={id}

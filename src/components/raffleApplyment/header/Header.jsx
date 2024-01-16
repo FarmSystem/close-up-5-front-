@@ -6,7 +6,7 @@ function Header(props) {
   return (
     <S.HeaderWrapper>
       <S.HeaderBack>
-        <Back />
+        <Back link={props.link} />
       </S.HeaderBack>
       <S.HeaderTitle>{props.title}</S.HeaderTitle>
     </S.HeaderWrapper>
