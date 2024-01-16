@@ -16,48 +16,47 @@ function UserSignUp() {
     phoneNumber: '',
     profileImage: '',
   });
-  const handleImgFile = file => {
-    setImageData(file);
-  };
+
   const handleInputChange = (field, value) => {
-    setFormData({
-      ...formData,
-      [field]: value,
-    });
-  };
-
-  const handleImageUpload = e => {
-    const file = e.target.files[0];
-
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      profileImage: file,
-    }));
+    switch (field) {
+      case 'nickname':
+        setNickname(value);
+        break;
+      case 'address':
+        setAddress(value);
+        break;
+      case 'phoneNumber':
+        setPhoneNumber(value);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleSignUp = async () => {
     const userInfo = {
-      nickname: 'nickname',
-      address: 'address',
-      phoneNumber: 'phoneNumber',
+      nickname: nickname,
+      address: address,
+      phoneNumber: phoneNumber,
     };
+
     const formData = new FormData();
     formData.append(
       'userInfoRequest',
       new Blob([JSON.stringify(userInfo)], { type: 'application/json' })
     );
+
     formData.append('profileImage', imageData);
+
     try {
       const response = await axios.post(`/user/sign-up`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      // 성공 처리, 예를 들어 새로운 페이지로 리다이렉트
-      console.log(response.data);
+      window.location.href = '/raffle';
     } catch (error) {
-      // Handle error
-      console.error(error);
+      alert('회원가입 실패 :(');
     }
   };
 
@@ -216,7 +215,7 @@ function UserSignUp() {
               <input
                 type="text"
                 placeholder="활동하시는 계정의 이름을 적어주세요."
-                value={formData.additionalData}
+                value={nickname}
                 onChange={e => handleInputChange('nickname', e.target.value)}
                 style={{
                   width: 259,
@@ -241,7 +240,7 @@ function UserSignUp() {
               <input
                 type="text"
                 placeholder="무형 래플 서비스를 위해 주소를 적어주세요."
-                value={formData.addressData1}
+                value={address}
                 onChange={e => handleInputChange('address', e.target.value)}
                 style={{
                   width: 259,
@@ -293,7 +292,7 @@ function UserSignUp() {
               <input
                 type="text"
                 placeholder="긴급 시 연락할 수 있는 번호를 입력해주세요."
-                value={formData.emergencyContactNumber}
+                value={phoneNumber}
                 onChange={e => handleInputChange('phoneNumber', e.target.value)}
                 style={{
                   width: 259,
