@@ -31,7 +31,7 @@ function Box() {
           <p>Loading…</p>
         ) : (
           raffleProducts.map(product => (
-            <S.styledLink
+            <S.StyledLink
               to={`/winningConfirm/${product.raffleId}`}
               key={product.raffleId}
             >
@@ -49,7 +49,7 @@ function Box() {
                   </S.RaffleContentsPrice>
                 </S.RaffleContentslist>
               </S.RaffleContents>
-            </S.styledLink>
+            </S.StyledLink>
           ))
         )}
       </S.RaffleView>
