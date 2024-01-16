@@ -88,11 +88,7 @@ const router = createBrowserRouter([
         element: <RafflePaymentComplete />,
       },
       {
-        path: '/winningConfirm/detail/:id',
-        element: <WinningConfirm />,
-      },
-      {
-        path: '/winningConfirm/detail',
+        path: '/winningConfirm/:id',
         element: <RaffleWinningConfirmDetail />,
       },
       {
