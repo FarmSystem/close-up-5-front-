@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { GlobalStyle } from './style/globalStyle';
 import NavBar from './components/layouts/NavBar.jsx';
@@ -29,11 +29,15 @@ const Content = styled.div`
   align-items: center;
   margin-bottom: 25px;
   border-radius: 15px;
-  border: 1px solid rgba(117, 119, 132, 0.25);
-  background: rgba(25, 25, 28, 0.5);
-  box-shadow: 4px 4px 4px 0px #000;
-  backdrop-filter: blur(5px);
   margin-top: -25px;
+  ${({ theme }) =>
+    theme !== '/' &&
+    `
+    border: 1px solid rgba(117, 119, 132, 0.25);
+    background: rgba(25, 25, 28, 0.5);
+    backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 4px 0px #000;
+  `}
 `;
 
 const Back = styled.div``;
@@ -42,21 +46,24 @@ const PlanetIconWrap = styled.img`
   margin-top: 12px;
   position: absolute;
   z-index: 1;
+  display: ${({ theme }) => (theme === '/' ? 'none' : 'block')};
 `;
 const NebulaIconWrap = styled.img`
   width: 360px;
   position: relative;
   margin-top: -55px;
+  display: ${({ theme }) => (theme === '/' ? 'none' : 'block')};
 `;
 
 const Layout = () => {
+  const location = useLocation();
   return (
     <>
       <Back>
         <Wrapper>
-          <PlanetIconWrap src={PlanetIcon} />
-          <NebulaIconWrap src={NebulaIcon} />
-          <Content>
+          <PlanetIconWrap src={PlanetIcon} theme={location.pathname} />
+          <NebulaIconWrap src={NebulaIcon} theme={location.pathname} />
+          <Content theme={location.pathname}>
             <Outlet />
           </Content>
           <NavBar />
