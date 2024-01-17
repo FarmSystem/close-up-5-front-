@@ -52,6 +52,11 @@ function UserSignUp() {
   };
 
   const handleSignUp = async () => {
+    if (!nickname || !address || !phoneNumber || !imageData) {
+      alert('모든 필수 입력 항목을 작성해주세요.');
+      return;
+    }
+
     const finalAddress = address + ' ' + detailAddress;
     const userInfo = {
       nickname: nickname,
