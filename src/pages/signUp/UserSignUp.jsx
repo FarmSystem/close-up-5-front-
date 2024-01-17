@@ -5,10 +5,13 @@ import { Link } from 'react-router-dom';
 import axios from '../../../src/api/axios';
 import FileInput from '../../components/raffleWriting/input/FileInput';
 import * as S from './style';
+import DaumPostcode from 'react-daum-postcode';
 
 function UserSignUp() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [nickname, setNickname] = useState('');
   const [address, setAddress] = useState('');
+  const [detailAddress, setDetailAddress] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [imageData, setImageData] = useState(null);
   const [formData, setFormData] = useState({
@@ -18,13 +21,27 @@ function UserSignUp() {
     profileImage: '',
   });
 
+  // 우편번호 찾기 모달창
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleComplete = data => {
+    setAddress(data.address);
+    handleModalClose();
+  };
+
   const handleInputChange = (field, value) => {
     switch (field) {
       case 'nickname':
         setNickname(value);
         break;
-      case 'address':
-        setAddress(value);
+      case 'detailAddress':
+        setDetailAddress(value);
         break;
       case 'phoneNumber':
         setPhoneNumber(value);
@@ -35,9 +52,10 @@ function UserSignUp() {
   };
 
   const handleSignUp = async () => {
+    const finalAddress = address + ' ' + detailAddress;
     const userInfo = {
       nickname: nickname,
-      address: address,
+      address: finalAddress,
       phoneNumber: phoneNumber,
     };
 
@@ -87,7 +105,7 @@ function UserSignUp() {
               width: 23,
               height: 40,
               left: -10,
-              top: 10,
+              top: 30,
               position: 'absolute',
             }}
           />
@@ -125,7 +143,7 @@ function UserSignUp() {
                 width: 57,
                 height: 8,
                 left: 0,
-                top: -44,
+                top: -34,
                 position: 'absolute',
                 color: 'white',
                 fontSize: 12,
@@ -142,7 +160,7 @@ function UserSignUp() {
                 width: 57,
                 height: 7,
                 left: 0,
-                top: -108,
+                top: -98,
                 position: 'absolute',
                 color: 'white',
                 fontSize: 12,
@@ -159,7 +177,7 @@ function UserSignUp() {
                 width: 57,
                 height: 9,
                 left: 0,
-                top: 23,
+                top: 40,
                 position: 'absolute',
                 color: 'white',
                 fontSize: 12,
@@ -175,7 +193,7 @@ function UserSignUp() {
               style={{
                 height: 6,
                 left: 0,
-                top: 132,
+                top: 152,
                 position: 'absolute',
                 color: 'white',
                 fontSize: 12,
@@ -191,7 +209,7 @@ function UserSignUp() {
               style={{
                 height: 9,
                 left: 0,
-                top: 209,
+                top: 229,
                 position: 'absolute',
                 color: 'white',
                 fontSize: 12,
@@ -208,7 +226,7 @@ function UserSignUp() {
                 width: 260,
                 height: 90,
                 left: 0,
-                top: 27,
+                top: 37,
                 position: 'absolute',
               }}
             >
@@ -217,6 +235,7 @@ function UserSignUp() {
                 type="text"
                 placeholder="활동하시는 계정의 이름을 적어주세요."
                 value={nickname}
+                required
                 onChange={e => handleInputChange('nickname', e.target.value)}
                 style={{
                   width: 259,
@@ -237,17 +256,35 @@ function UserSignUp() {
                   lineHeight: 20,
                 }}
               />
+              <S.ReportEventAddressZipCodeButton onClick={handleModalOpen}>
+                주소 찾기
+              </S.ReportEventAddressZipCodeButton>
 
+              {isModalOpen && (
+                <>
+                  <S.ReportEvnetAddressModalBackground
+                    onClick={handleModalClose}
+                  />
+
+                  <S.ReportEvnetAddressModal>
+                    <DaumPostcode
+                      onComplete={handleComplete}
+                      autoClose
+                      animation
+                    />
+                  </S.ReportEvnetAddressModal>
+                </>
+              )}
               <input
                 type="text"
                 placeholder="무형 래플 서비스를 위해 주소를 적어주세요."
                 value={address}
-                onChange={e => handleInputChange('address', e.target.value)}
+                onChange={e => setAddress(e.target.value)}
                 style={{
                   width: 259,
                   height: 26,
                   left: 0,
-                  top: 124,
+                  top: 134,
                   position: 'absolute',
                   background:
                     'linear-gradient(213deg, #464646 0%, #464646 100%)',
@@ -268,13 +305,13 @@ function UserSignUp() {
                 placeholder="상세 주소를 적어주세요."
                 value={formData.addressData2}
                 onChange={e =>
-                  handleInputChange('addressData2', e.target.value)
+                  handleInputChange('detailAddress', e.target.value)
                 }
                 style={{
                   width: 259,
                   height: 26,
                   left: 0,
-                  top: 164,
+                  top: 174,
                   position: 'absolute',
                   background:
                     'linear-gradient(213deg, #464646 0%, #464646 100%)',
@@ -299,7 +336,7 @@ function UserSignUp() {
                   width: 259,
                   height: 26,
                   left: 0,
-                  top: 237,
+                  top: 247,
                   position: 'absolute',
                   background:
                     'linear-gradient(213deg, #464646 0%, #464646 100%)',

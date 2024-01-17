@@ -46,3 +46,44 @@ export const SignUpUnClickedButton = styled.div`
   backdrop-filter: blur(2px);
   border-radius: 5px;
 `;
+
+export const ReportEventAddressZipCodeButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 110px;
+  left: 50px;
+  width: 98px;
+  height: 20px;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: #000;
+  font-family: NotoSansKR_Regular;
+  font-size: 12px;
+  font-weight: 400;
+  padding-bottom: 3px;
+  letter-spacing: -0.3px;
+  cursor: pointer;
+`;
+
+export const ReportEvnetAddressModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  cursor: pointer;
+`;
+
+// 행사 주소 입력
+export const ReportEvnetAddressModal = styled.div`
+  position: absolute;
+  width: 120%;
+  top: 20%;
+  left: -25px;
+  z-index: 999;
+`;
