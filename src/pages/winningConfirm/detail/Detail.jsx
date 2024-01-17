@@ -29,9 +29,9 @@ function Detail() {
 
   return (
     <>
-      <S.HeaderBack>
+      {/* <S.HeaderBack>
         <Back />
-      </S.HeaderBack>
+      </S.HeaderBack> */}
       {data && (
         <RaffleConfirmDetail
           winningInfo={data.winningInfo}

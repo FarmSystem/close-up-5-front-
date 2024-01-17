@@ -7,25 +7,63 @@ export const DetailWrapper = styled.div`
   align-items: center;
 `;
 
-export const DetailWinningInfo = styled.div`
-  /* 스타일 정의 */
+export const MessageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  align-items: flex-start;
+  margin-top: 20px;
 `;
 
-export const WinningMessage = styled.h1`
+export const DetailWinningInfo = styled.div`
+  background: #5d00ff;
+  box-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  backdrop-filter: blur(2px);
   color: #fff;
-  font-size: 16px;
+  text-align: center;
+  font-size: 10px;
   font-weight: 700;
   line-height: 20px;
-  margin-top: 20px;
+  border-radius: 40px;
+  padding: 1px 12px;
+  position: absolute;
+  left: 20px;
+`;
+
+export const WinningMessage = styled.div`
+  display: flex;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
   margin-bottom: 5px;
+  text-align: center;
 `;
 
 export const WinningProductUrl = styled.button`
-  /* 스타일 정의 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 121px;
+  height: 27px;
+  background: linear-gradient(213deg, #7d3af1 32.82%, #dc8ae1 84.65%);
+  box-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  backdrop-filter: blur(2px);
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  border-radius: 40px;
+  margin-top: 20px;
 `;
 
-export const Divider = styled.hr`
-  /* 스타일 정의 */
+export const Divider = styled.div`
+  width: 100%;
+  height: 1px;
+  background: #b0b0b05c;
+  margin: 20px 0px;
 `;
 
 export const TitleWrapper = styled.div`

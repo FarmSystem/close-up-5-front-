@@ -8,20 +8,15 @@ function Detail(props) {
 
   return (
     <S.DetailWrapper>
-      {props.winningInfo == 'WINNING' ? (
-        <>
-          축하드립니다. <br />
-          래플에 당첨되셨습니다.
-        </>
-      ) : (
-        <></>
-      )}
+      {props.winningInfo == 'WINNING' ? <></> : <></>}
 
-      <S.DetailWinningInfo>{props.winningInfo}</S.DetailWinningInfo>
-      <S.WinningMessage>
-        축하드립니다. <br />
-        래플에 당첨되셨습니다.
-      </S.WinningMessage>
+      <S.MessageWrapper>
+        <S.DetailWinningInfo>당첨</S.DetailWinningInfo>
+        <S.WinningMessage>
+          축하드립니다! <br />
+          래플에 당첨되셨습니다🎉
+        </S.WinningMessage>
+      </S.MessageWrapper>
       <S.WinningProductUrl as="a" href={props.downloadUrl}>
         다운로드
       </S.WinningProductUrl>
