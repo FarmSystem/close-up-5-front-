@@ -1,11 +1,16 @@
 import React from 'react';
 import * as S from './style';
+import { useNavigate } from 'react-router-dom';
 
 function Detail(props) {
   const startDate = props.raffleProductStartDate.split('T')[0];
   const endDate = props.raffleProductEndDate.split('T')[0];
   const createDate = props.raffleCreateDate.split('T')[0];
+  const navigate = useNavigate();
 
+  const onClickButton = () => {
+    navigate(-1);
+  };
   return (
     <S.DetailWrapper>
       {props.winningInfo == 'WINNING' ? <></> : <></>}
@@ -41,8 +46,8 @@ function Detail(props) {
             {props.raffleProductContent}
           </S.DetailRaffleProductContent>
         </S.DetailContent>
+        <S.ConfirmButton onClick={onClickButton}>확인</S.ConfirmButton>
       </S.DetailContentWrapper>
-      <S.ConfirmButton>확인</S.ConfirmButton>
     </S.DetailWrapper>
   );
 }

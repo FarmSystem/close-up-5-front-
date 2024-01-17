@@ -144,6 +144,22 @@ export const DetailRaffleProductContent = styled.div`
   line-height: 20px;
 `;
 
-export const ConfirmButton = styled.button`
-  /* 스타일 정의 */
+export const ConfirmButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 33px;
+  flex-shrink: 0;
+  background: linear-gradient(213deg, #7d3af1 32.82%, #dc8ae1 84.65%);
+  box-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  backdrop-filter: blur(2px);
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-top: 20px;
 `;
