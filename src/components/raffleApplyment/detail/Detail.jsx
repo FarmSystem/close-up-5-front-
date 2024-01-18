@@ -5,9 +5,13 @@ import raffleImg from '../../../assets/images/raffleApplyment/defaultRaffleImg.p
 import ProfileImg from '../../../assets/images/raffleApplyment/defaultCreatorProfile.png';
 
 function Detail(props) {
+  console.log(props);
+
   return (
     <S.DetailWrapper>
-      <S.DetailTitle>{props.title}</S.DetailTitle>
+      <S.DetailTitle>
+        [{props.profileName}] {props.title}
+      </S.DetailTitle>
       <S.DetailDate>
         {props.startDate} ~ {props.endDate}
       </S.DetailDate>
