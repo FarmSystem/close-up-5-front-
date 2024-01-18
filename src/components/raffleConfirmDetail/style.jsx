@@ -16,6 +16,16 @@ export const MessageWrapper = styled.div`
   margin-top: 20px;
 `;
 
+export const MessageLoseWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
+  align-items: flex-start;
+  margin-top: 20px;
+  margin-left: 40px;
+`;
+
 export const DetailWinningInfo = styled.div`
   background: #5d00ff;
   box-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -29,6 +39,20 @@ export const DetailWinningInfo = styled.div`
   padding: 1px 12px;
   position: absolute;
   left: 20px;
+`;
+
+export const DetailLoseInfo = styled.div`
+  background: #9c9b9c;
+  box-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  backdrop-filter: blur(2px);
+  color: #fff;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 20px;
+  border-radius: 40px;
+  padding: 1px 12px;
+  margin-bottom: 30px;
 `;
 
 export const WinningMessage = styled.div`
