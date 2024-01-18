@@ -170,9 +170,11 @@ export const DetailRaffleProductContent = styled.div`
 
 export const ConfirmButton = styled.div`
   display: flex;
+  position: absolute;
+  bottom: 0px;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 85%;
   height: 33px;
   flex-shrink: 0;
   background: linear-gradient(213deg, #7d3af1 32.82%, #dc8ae1 84.65%);
@@ -186,4 +188,25 @@ export const ConfirmButton = styled.div`
   border-radius: 40px;
   cursor: pointer;
   margin-top: 20px;
+  margin-bottom: 16px;
 `;
+
+// display: flex;
+// position: absolute;
+// bottom: 0px;
+// width: 273px;
+// height: 33px;
+// justify-content: center;
+// align-items: center;
+// border-radius: 40px;
+// background: linear-gradient(213deg, #7d3af1 32.82%, #dc8ae1 84.65%);
+// box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+// backdrop-filter: blur(2px);
+// color: #fff;
+// text-align: center;
+// font-size: 16px;
+// font-weight: 700;
+// line-height: 20px;
+// margin-top: 20px;
+// margin-bottom: 16px;
+// cursor: pointer;
