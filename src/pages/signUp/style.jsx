@@ -53,18 +53,16 @@ export const ReportEventAddressZipCodeButton = styled.div`
   align-items: center;
   position: absolute;
   top: 110px;
-  left: 50px;
-  width: 98px;
+  left: 200px;
+  width: 62.183px;
   height: 20px;
-  background-color: #fff;
-  border: 1px solid black;
-  border-radius: 5px;
-  color: #000;
-  font-family: NotoSansKR_Regular;
-  font-size: 12px;
-  font-weight: 400;
-  padding-bottom: 3px;
-  letter-spacing: -0.3px;
+  color: #fff;
+  border-radius: 10px;
+  background: #7d3af1;
+  box-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  backdrop-filter: blur(2px);
+  font-size: 10px;
+  font-weight: 700;
   cursor: pointer;
 `;
 
