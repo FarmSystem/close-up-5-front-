@@ -13,7 +13,7 @@ function Detail(props) {
   };
   return (
     <S.DetailWrapper>
-      {props.winningInfo == 'WINNING' ? (
+      {props.winningInfo == 'WINNING' && (
         <>
           <S.MessageWrapper>
             <S.DetailWinningInfo>당첨</S.DetailWinningInfo>
@@ -27,7 +27,9 @@ function Detail(props) {
           </S.WinningProductUrl>
           <S.Divider />
         </>
-      ) : (
+      )}
+
+      {props.winningInfo == 'LOSE' && (
         <>
           <S.MessageLoseWrapper>
             <S.DetailLoseInfo>미당첨</S.DetailLoseInfo>

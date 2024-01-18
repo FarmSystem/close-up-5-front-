@@ -93,6 +93,7 @@ export const Divider = styled.div`
 export const TitleWrapper = styled.div`
   display: flex;
   margin-bottom: 5px;
+  margin-top: 20px;
 `;
 
 export const CreatorName = styled.div`
