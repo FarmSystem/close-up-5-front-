@@ -109,6 +109,7 @@ export const DetailRaffleProductTitle = styled.h2`
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
+  width: 250px;
 `;
 
 export const DetailDate = styled.div`

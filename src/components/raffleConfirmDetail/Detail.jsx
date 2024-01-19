@@ -62,9 +62,8 @@ function Detail(props) {
       )}
 
       <S.TitleWrapper>
-        <S.CreatorName>[{props.creatorName}] &nbsp; </S.CreatorName>
         <S.DetailRaffleProductTitle>
-          {props.raffleProductTitle}
+          [{props.creatorName}] &nbsp; {props.raffleProductTitle}
         </S.DetailRaffleProductTitle>
       </S.TitleWrapper>
       <S.DetailDate>
