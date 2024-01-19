@@ -78,6 +78,7 @@ function UserSignUp() {
           'Content-Type': 'multipart/form-data',
         },
       });
+      localStorage.setItem('userRole', 'user');
       window.location.href = '/raffle';
     } catch (error) {
       alert('회원가입 실패 :(');
