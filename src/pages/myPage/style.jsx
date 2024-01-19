@@ -56,7 +56,7 @@ export const MyPagePoint = styled.div`
 export const MyPageContent = styled.div`
   display: flex;
   width: 267px;
-  height: 340px;
+  min-height: 470px;
   flex-direction: column;
 
   align-items: center;
@@ -99,4 +99,24 @@ export const ButtonWrapper = styled.div`
   display: flex;
   gap: 24px;
   margin-bottom: 30px;
+`;
+
+export const LogoutButton = styled.div`
+  display: flex;
+  position: absolute;
+  bottom: 16px;
+  width: 240px;
+  height: 34.077px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: #7d3af1;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
 `;
