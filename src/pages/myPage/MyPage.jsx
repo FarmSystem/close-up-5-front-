@@ -86,7 +86,7 @@ function MyPage() {
       {data && (
         <>
           <S.MyPageHeader>
-            <S.MyPageProfileImg src={ProfileDefault} />
+            <S.MyPageProfileImg src={data.creatorProfileImageUrl} />
             <S.MyPageNameAndPoint>
               <S.MyPageProfileName>{data.creatorName}</S.MyPageProfileName>
               <S.MyPagePoint>포인트: {data.totalPoint}원</S.MyPagePoint>
