@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../../../components/raffleConfirmDetail/header/Header';
-
+import Back from '../../../components/common/back/Back';
+import * as S from './style';
 // import Header from '../../../components/raffleApplyment/header/Header';
 import RaffleConfirmDetail from '../../../components/raffleConfirmDetail/Detail';
 
@@ -27,10 +28,12 @@ function Detail() {
 
   return (
     <>
-      <Header title={'축하드립니다. 래플에 당첨되셨습니다.'} />
+      {/* <S.HeaderBack>
+        <Back />
+      </S.HeaderBack> */}
       {data && (
         <RaffleConfirmDetail
-          winningInfo={data.winningInfo} //
+          winningInfo={data.winningInfo}
           raffleCreateDate={data.raffleCreateDate}
           raffleProductStartDate={data.raffleProductStartDate}
           raffleProductEndDate={data.raffleProductEndDate}

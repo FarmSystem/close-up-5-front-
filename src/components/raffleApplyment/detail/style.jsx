@@ -12,6 +12,7 @@ export const DetailTitle = styled.div`
   font-weight: 700;
   line-height: 20px;
   margin-top: 20px;
+  width: 247px;
 `;
 
 export const DetailDate = styled.div`

@@ -10,7 +10,7 @@ function Box() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/user/raffles/winning');
+        const response = await axios.get('/user/raffles');
         setRaffleProducts(response.data.result);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -31,7 +31,7 @@ function Box() {
           <p>Loading…</p>
         ) : (
           raffleProducts.map(product => (
-            <S.styledLink
+            <S.StyledLink
               to={`/winningConfirm/${product.raffleId}`}
               key={product.raffleId}
             >
@@ -49,7 +49,7 @@ function Box() {
                   </S.RaffleContentsPrice>
                 </S.RaffleContentslist>
               </S.RaffleContents>
-            </S.styledLink>
+            </S.StyledLink>
           ))
         )}
       </S.RaffleView>

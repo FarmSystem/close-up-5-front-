@@ -66,7 +66,7 @@ function MyPage() {
           };
           try {
             const response = axios.post(`/user/verifyIamport`, data);
-            console.log(response);
+            alert('포인트 충전이 완료되었습니다 :)');
             window.location.reload();
           } catch (e) {
             alert(e);
@@ -86,7 +86,7 @@ function MyPage() {
       {data && (
         <>
           <S.MyPageHeader>
-            <S.MyPageProfileImg src={ProfileDefault} />
+            <S.MyPageProfileImg src={data.creatorProfileImageUrl} />
             <S.MyPageNameAndPoint>
               <S.MyPageProfileName>{data.creatorName}</S.MyPageProfileName>
               <S.MyPagePoint>포인트: {data.totalPoint}원</S.MyPagePoint>

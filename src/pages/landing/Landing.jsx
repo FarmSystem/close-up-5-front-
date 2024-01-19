@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import styled, { keyframes } from 'styled-components';
 import * as S from './style';
-import { Link } from 'react-router-dom';
-import closeupImage from '../../../src/assets/images/logo/closeup.png'
+import closeupImage from '../../../src/assets/images/logo/closeup.png';
+const moveUpAnimation = keyframes`
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+`;
 
+const LandingImage = styled.img`
+  width: 140px;
+  height: 220px;
+  position: absolute;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  animation: ${moveUpAnimation} 1s ease-in-out forwards;
+`;
 
 function Landing() {
-  return (
-    <S.LandingWrapper style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <Link to="/login">
-        <div style={{ position: 'absolute', left: '50%', top: '40%', transform: 'translate(-50%, -50%)' }}>
-          <img style={{ width: 140, height: 220 }} src={closeupImage} alt="Closeup" />
-        </div>
-      </Link>
-    </S.LandingWrapper>
-  );
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      window.location.href = '/login';
+    }, 1000);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  return <LandingImage src={closeupImage} alt="Closeup" />;
 }
 
 export default Landing;
