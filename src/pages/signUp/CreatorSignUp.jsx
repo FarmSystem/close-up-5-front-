@@ -1,46 +1,97 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './style';
 import pictureImage from '../../../src/assets/images/icon/picture.png';
 import backImage from '../../../src/assets/images/back/return.png';
 import { Link } from 'react-router-dom';
+import FileInput from '../../components/raffleWriting/input/FileInput';
 import axios from '../../../src/api/axios';
+import DaumPostcode from 'react-daum-postcode';
 
 function CreatorSignUp() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [nickname, setNickname] = useState('');
+  const [address, setAddress] = useState('');
+  const [detailAddress, setDetailAddress] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [imageData, setImageData] = useState(null);
   const [formData, setFormData] = useState({
     nickname: '',
     address: '',
     phoneNumber: '',
-    profileImageUrl: '',
-    gender: '', // Add gender and birthday to the state
-    birthday: '',
-    additionalData: '',
-    addressData1: '',
-    addressData2: '',
-    emergencyContactNumber: '',
-    introduceData: '',
+    profileImage: '',
   });
 
-  const handleInputChange = (field, value) => {
-    setFormData({
-      ...formData,
-      [field]: value,
-    });
+  // 우편번호 찾기 모달창
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
   };
 
-  const handleImageUpload = e => {
-    // Handle image upload logic and update profileImageUrl in state
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleComplete = data => {
+    setAddress(data.address);
+    handleModalClose();
+  };
+
+  const handleInputChange = (field, value) => {
+    switch (field) {
+      case 'nickname':
+        setNickname(value);
+        break;
+      case 'detailAddress':
+        setDetailAddress(value);
+        break;
+      case 'phoneNumber':
+        setPhoneNumber(value);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleSignUp = async () => {
+    if (!nickname || !address || !phoneNumber || !imageData) {
+      alert('모든 필수 입력 항목을 작성해주세요.');
+      return;
+    }
+
+    const finalAddress = address + ' ' + detailAddress;
+    const userInfo = {
+      nickname: nickname,
+      address: finalAddress,
+      phoneNumber: phoneNumber,
+    };
+
+    const formData = new FormData();
+    formData.append(
+      'userInfoRequest',
+      new Blob([JSON.stringify(userInfo)], { type: 'application/json' })
+    );
+
+    formData.append('profileImage', imageData);
+
     try {
-      const response = await axios.post('/user/sign-up', formData);
-      // Handle success, e.g., redirect to a new page
-      console.log(response.data);
+      const response = await axios.post(`/user/sign-up`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      window.location.href = '/raffle';
     } catch (error) {
-      // Handle error
-      console.error(error);
+      alert('회원가입 실패 :(');
     }
   };
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tokenFromUrl = urlParams.get('accessToken');
+    if (tokenFromUrl) {
+      localStorage.setItem('accessToken', tokenFromUrl);
+      window.location.href = '/usersignup';
+    }
+  }, []);
 
   return (
     <div
@@ -59,7 +110,7 @@ function CreatorSignUp() {
               width: 23,
               height: 40,
               left: -10,
-              top: 10,
+              top: 30,
               position: 'absolute',
             }}
           />
@@ -97,7 +148,7 @@ function CreatorSignUp() {
                 width: 57,
                 height: 8,
                 left: 0,
-                top: -44,
+                top: -34,
                 position: 'absolute',
                 color: 'white',
                 fontSize: 12,
@@ -114,7 +165,7 @@ function CreatorSignUp() {
                 width: 57,
                 height: 7,
                 left: 0,
-                top: -108,
+                top: -98,
                 position: 'absolute',
                 color: 'white',
                 fontSize: 12,
@@ -131,7 +182,7 @@ function CreatorSignUp() {
                 width: 57,
                 height: 9,
                 left: 0,
-                top: 23,
+                top: 40,
                 position: 'absolute',
                 color: 'white',
                 fontSize: 12,
@@ -147,7 +198,7 @@ function CreatorSignUp() {
               style={{
                 height: 6,
                 left: 0,
-                top: 132,
+                top: 152,
                 position: 'absolute',
                 color: 'white',
                 fontSize: 12,
@@ -163,7 +214,7 @@ function CreatorSignUp() {
               style={{
                 height: 9,
                 left: 0,
-                top: 209,
+                top: 229,
                 position: 'absolute',
                 color: 'white',
                 fontSize: 12,
@@ -180,7 +231,7 @@ function CreatorSignUp() {
                 width: 71,
                 height: 9,
                 left: 0,
-                top: 269,
+                top: 379,
                 position: 'absolute',
                 color: 'white',
                 fontSize: 12,
@@ -197,7 +248,7 @@ function CreatorSignUp() {
                 width: 260,
                 height: 90,
                 left: 0,
-                top: 27,
+                top: 37,
                 position: 'absolute',
               }}
             >
@@ -205,10 +256,9 @@ function CreatorSignUp() {
               <input
                 type="text"
                 placeholder="활동하시는 계정의 이름을 적어주세요."
-                value={formData.additionalData}
-                onChange={e =>
-                  handleInputChange('additionalData', e.target.value)
-                }
+                value={nickname}
+                required
+                onChange={e => handleInputChange('nickname', e.target.value)}
                 style={{
                   width: 259,
                   height: 26,
@@ -229,18 +279,35 @@ function CreatorSignUp() {
                 }}
               />
 
+              <S.ReportEventAddressZipCodeButton onClick={handleModalOpen}>
+                주소 찾기
+              </S.ReportEventAddressZipCodeButton>
+
+              {isModalOpen && (
+                <>
+                  <S.ReportEvnetAddressModalBackground
+                    onClick={handleModalClose}
+                  />
+
+                  <S.ReportEvnetAddressModal>
+                    <DaumPostcode
+                      onComplete={handleComplete}
+                      autoClose
+                      animation
+                    />
+                  </S.ReportEvnetAddressModal>
+                </>
+              )}
               <input
                 type="text"
                 placeholder="무형 래플 서비스를 위해 주소를 적어주세요."
-                value={formData.addressData1}
-                onChange={e =>
-                  handleInputChange('addressData1', e.target.value)
-                }
+                value={address}
+                onChange={e => setAddress(e.target.value)}
                 style={{
                   width: 259,
                   height: 26,
                   left: 0,
-                  top: 124,
+                  top: 134,
                   position: 'absolute',
                   background:
                     'linear-gradient(213deg, #464646 0%, #464646 100%)',
@@ -261,13 +328,13 @@ function CreatorSignUp() {
                 placeholder="상세 주소를 적어주세요."
                 value={formData.addressData2}
                 onChange={e =>
-                  handleInputChange('addressData2', e.target.value)
+                  handleInputChange('detailAddress', e.target.value)
                 }
                 style={{
                   width: 259,
                   height: 26,
                   left: 0,
-                  top: 164,
+                  top: 174,
                   position: 'absolute',
                   background:
                     'linear-gradient(213deg, #464646 0%, #464646 100%)',
@@ -286,15 +353,13 @@ function CreatorSignUp() {
               <input
                 type="text"
                 placeholder="긴급 시 연락할 수 있는 번호를 입력해주세요."
-                value={formData.emergencyContactNumber}
-                onChange={e =>
-                  handleInputChange('emergencyContactNumber', e.target.value)
-                }
+                value={phoneNumber}
+                onChange={e => handleInputChange('phoneNumber', e.target.value)}
                 style={{
                   width: 259,
                   height: 26,
                   left: 0,
-                  top: 237,
+                  top: 247,
                   position: 'absolute',
                   background:
                     'linear-gradient(213deg, #464646 0%, #464646 100%)',
@@ -310,24 +375,22 @@ function CreatorSignUp() {
                 }}
               />
 
-              <input
-                type="file"
-                placeholder="이미지 업로드"
-                onChange={e => handleImageUpload(e)}
+              <div
                 style={{
-                  width: 259,
-                  height: 22,
-                  left: 0,
-                  top: 315, // Adjust the top value accordingly
+                  width: 120,
+                  height: 26,
+                  left: 5,
+                  top: 330,
                   position: 'absolute',
-                  color: 'white',
-                  zIndex: 1, // Place it above the styled text div
                   background:
-                    'linear-gradient(213deg, #464646 0%, #464646 100%)',
+                    'linear-gradient(213deg, #7D3AF1 0%, #DC8AE1 100%)',
                   boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
                   borderRadius: 5,
+                  backdropFilter: 'blur(4px)',
                 }}
-              />
+              >
+                <FileInput getValue={setImageData} />
+              </div>
 
               <input
                 type="text"
@@ -340,7 +403,7 @@ function CreatorSignUp() {
                   width: 259,
                   height: 26,
                   left: 0,
-                  top: 375,
+                  top: 475,
                   position: 'absolute',
                   background:
                     'linear-gradient(213deg, #464646 0%, #464646 100%)',
@@ -452,10 +515,10 @@ function CreatorSignUp() {
             <button
               onClick={handleSignUp}
               style={{
-                width: 256.7,
+                width: 266,
                 height: 34.08,
                 left: 1,
-                top: 460,
+                top: 560,
                 position: 'absolute',
                 background: '#7D3AF1',
                 boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
