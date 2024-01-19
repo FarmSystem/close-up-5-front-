@@ -21,7 +21,6 @@ function Box() {
         const response = await axios.get(
           '/user/raffle-products?page=1&size=10'
         );
-        console.log(response.data.result.content);
         setRaffleProducts(response.data.result.content);
       } catch (error) {
         console.error('Error fetching data:', error);

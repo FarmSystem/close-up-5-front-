@@ -81,6 +81,7 @@ export const WinningProductUrl = styled.div`
   line-height: 20px;
   border-radius: 40px;
   margin-top: 20px;
+  cursor: pointer;
 `;
 
 export const Divider = styled.div`

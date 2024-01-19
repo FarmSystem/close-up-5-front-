@@ -5,8 +5,6 @@ import raffleImg from '../../../assets/images/raffleApplyment/defaultRaffleImg.p
 import ProfileImg from '../../../assets/images/raffleApplyment/defaultCreatorProfile.png';
 
 function Detail(props) {
-  console.log(props);
-
   return (
     <S.DetailWrapper>
       <S.DetailTitle>

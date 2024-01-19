@@ -21,7 +21,6 @@ function Detail() {
     try {
       const response = await axios.get(`/user/raffles/${id}`);
       setData(response.data.result);
-      console.log(response.data.result);
     } catch (e) {
       console.log(e);
     }
