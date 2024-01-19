@@ -11,6 +11,22 @@ function Detail(props) {
   const onClickButton = () => {
     navigate(-1);
   };
+
+  const excelDownload = async url => {
+    try {
+      const res = await fetch(url, { mode: 'no-cors' });
+      const blob = await res.blob();
+      const downloadUrl = window.URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = 'raffle.png';
+      link.click();
+    } catch (error) {
+      // console.error('Error fetching the file:', error);
+    }
+  };
+
   return (
     <S.DetailWrapper>
       {props.winningInfo == 'WINNING' && (
@@ -22,7 +38,14 @@ function Detail(props) {
               래플에 당첨되셨습니다🎉
             </S.WinningMessage>
           </S.MessageWrapper>
-          <S.WinningProductUrl as="a" href={props.downloadUrl}>
+          {/* <S.WinningProductUrl as="a" href={props.winningProductUrl}>
+            다운로드
+          </S.WinningProductUrl> */}
+
+          <S.WinningProductUrl
+            href={props.winningProductUrl}
+            onClick={() => excelDownload(props.winningProductUrl)}
+          >
             다운로드
           </S.WinningProductUrl>
           <S.Divider />

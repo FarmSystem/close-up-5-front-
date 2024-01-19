@@ -65,7 +65,7 @@ export const WinningMessage = styled.div`
   text-align: center;
 `;
 
-export const WinningProductUrl = styled.button`
+export const WinningProductUrl = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
