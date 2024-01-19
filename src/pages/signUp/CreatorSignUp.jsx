@@ -420,95 +420,10 @@ function CreatorSignUp() {
               />
 
               {/*유저/크리에이터*/}
-              <div
-                style={{
-                  width: 120,
-                  height: 26,
-                  left: 0,
-                  top: 0,
-                  position: 'absolute',
-                  background:
-                    'linear-gradient(213deg, #7D3AF1 0%, #DC8AE1 100%)',
-                  boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-                  borderRadius: 5,
-                  backdropFilter: 'blur(4px)',
-                }}
-              >
-                <div
-                  style={{
-                    width: 120,
-                    height: 26,
-                    left: 0,
-                    top: 0,
-                    position: 'absolute',
-                    borderRadius: 25,
-                  }}
-                />
-              </div>
-              <div
-                style={{
-                  width: 120,
-                  height: 5,
-                  left: 0,
-                  top: -106,
-                  position: 'absolute',
-                  textAlign: 'center',
-                  color: 'white',
-                  fontSize: 12,
-                  fontFamily: 'Karla',
-                  fontWeight: '700',
-                  lineHeight: 20,
-                  wordWrap: 'break-word',
-                }}
-              >
-                크리에이터
-              </div>
-
+              <S.SignUpClickedButton>크리에이터</S.SignUpClickedButton>
               <Link to="/usersignup">
-                <div
-                  style={{
-                    width: 120,
-                    height: 26,
-                    left: 140,
-                    top: 0,
-                    position: 'absolute',
-                    background:
-                      'linear-gradient(213deg, #464646 0%, #464646 100%)',
-                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-                    borderRadius: 5,
-                    backdropFilter: 'blur(4px)',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 120,
-                      height: 26,
-                      left: 0,
-                      top: 0,
-                      position: 'absolute',
-                      borderRadius: 25,
-                    }}
-                  />
-                </div>
+                <S.SignUpUnClickedButton>유저</S.SignUpUnClickedButton>
               </Link>
-            </div>
-            <div
-              style={{
-                width: 119,
-                height: 8,
-                left: 140,
-                top: -79,
-                position: 'absolute',
-                textAlign: 'center',
-                color: 'white',
-                fontSize: 12,
-                fontFamily: 'Karla',
-                fontWeight: '700',
-                lineHeight: 20,
-                wordWrap: 'break-word',
-              }}
-            >
-              유저
             </div>
 
             {/*회원가입 버튼*/}

@@ -360,7 +360,7 @@ function UserSignUp() {
                 style={{
                   width: 120,
                   height: 26,
-                  left: 0,
+                  left: 5,
                   top: 330,
                   position: 'absolute',
                   background:
@@ -384,7 +384,7 @@ function UserSignUp() {
             <button
               onClick={handleSignUp}
               style={{
-                width: 256.7,
+                width: 266,
                 height: 34.08,
                 left: 1,
                 top: 500,
