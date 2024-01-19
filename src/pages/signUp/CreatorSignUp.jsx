@@ -14,11 +14,13 @@ function CreatorSignUp() {
   const [detailAddress, setDetailAddress] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [imageData, setImageData] = useState(null);
+  const [comment, setComment] = useState('');
   const [formData, setFormData] = useState({
     nickname: '',
     address: '',
     phoneNumber: '',
     profileImage: '',
+    comment: '',
   });
 
   // 우편번호 찾기 모달창
@@ -46,13 +48,16 @@ function CreatorSignUp() {
       case 'phoneNumber':
         setPhoneNumber(value);
         break;
+      case 'comment':
+        setComment(value);
+        break;
       default:
         break;
     }
   };
 
   const handleSignUp = async () => {
-    if (!nickname || !address || !phoneNumber || !imageData) {
+    if (!nickname || !address || !phoneNumber || !imageData || !comment) {
       alert('모든 필수 입력 항목을 작성해주세요.');
       return;
     }
@@ -62,18 +67,20 @@ function CreatorSignUp() {
       nickname: nickname,
       address: finalAddress,
       phoneNumber: phoneNumber,
+      profileComment: comment,
     };
 
     const formData = new FormData();
     formData.append(
-      'userInfoRequest',
+      'postCreatorInfoRequest',
       new Blob([JSON.stringify(userInfo)], { type: 'application/json' })
     );
 
     formData.append('profileImage', imageData);
+    formData.append('verificationImage', imageData);
 
     try {
-      const response = await axios.post(`/user/sign-up`, formData, {
+      const response = await axios.post(`/creator/sign-up`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -395,10 +402,8 @@ function CreatorSignUp() {
               <input
                 type="text"
                 placeholder="본인을 표현하는 한 줄을 작성해주세요."
-                value={formData.introduceData}
-                onChange={e =>
-                  handleInputChange('introduceData', e.target.value)
-                }
+                value={comment}
+                onChange={e => handleInputChange('comment', e.target.value)}
                 style={{
                   width: 259,
                   height: 26,
