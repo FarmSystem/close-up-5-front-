@@ -21,7 +21,7 @@ export const SelectBox = styled.div`
   cursor: pointer;
   text-align: center;
   &::before {
-    content: "⌵";
+    content: '⌵';
     position: absolute;
     top: 4px;
     right: 8px;
@@ -43,7 +43,7 @@ export const SelectOptions = styled.ul`
   width: 100%;
   overflow: hidden;
   height: 160px;
-  max-height: ${(props) => (props.show ? "none" : "0")};
+  max-height: ${props => (props.show ? 'none' : '0')};
   padding: 0;
   border-radius: 8px;
   background-color: #222222;
@@ -71,10 +71,10 @@ export const TextInput = styled.input`
   height: 26px;
 
   &::placeholder {
-		color: #black;
+    color: black;
     text-align: center;
     font-family: Karla;
-	}
+  }
 `;
 
 export const TextArea = styled.textarea`
@@ -88,12 +88,12 @@ export const TextArea = styled.textarea`
   height: 162px;
 
   &::placeholder {
-		color: #black;
+    color: black;
     text-align: center;
     vertical-align: middle;
     font-family: Karla;
     line-height: 162px;
-	}
+  }
 `;
 
 export const TextLabel = styled.div`
@@ -105,7 +105,7 @@ export const TextLabel = styled.div`
 `;
 
 export const TextSmallLabel = styled.div`
-  color: #7D7D7D; 
+  color: #7d7d7d;
   text-align: center;
   font-family: Karla;
   font-size: 8px;
@@ -113,14 +113,13 @@ export const TextSmallLabel = styled.div`
   font-weight: 400;
 `;
 
-
 export const TextNumberArea = styled.div`
   display: flex;
   height: 26px;
   width: 257px;
   background: #47474b;
   border-radius: 8px;
-`
+`;
 
 export const NumberButton = styled.button`
   width: 25px;
@@ -151,6 +150,7 @@ export const ImageWrapperButton = styled.button`
   background: #47474b;
   border: 0px;
   border-radius: 5px;
+  cursor: pointer;
 `;
 
 export const ImageInput = styled.input`

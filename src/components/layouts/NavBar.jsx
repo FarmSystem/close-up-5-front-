@@ -20,6 +20,7 @@ function NavBar() {
   if (isLandingPage || isSignUpPage || isLoginPage) {
     return null;
   }
+  const role = localStorage.getItem('userRole');
 
   return (
     <S.NavBarWrapper>
@@ -33,10 +34,21 @@ function NavBar() {
         <S.NavTitle>래플</S.NavTitle>
       </S.NavTab>
 
-      <S.NavTab to="/winningConfirm">
-        <S.StyledGoGift />
-        <S.NavTitle>당첨 확인</S.NavTitle>
-      </S.NavTab>
+      {role === 'creator' ? (
+        <>
+          <S.NavTab to="/raffleWriting">
+            <S.StyledpiPencilSimpleLine />
+            <S.NavTitle>래플 작성</S.NavTitle>
+          </S.NavTab>
+        </>
+      ) : (
+        <>
+          <S.NavTab to="/winningConfirm">
+            <S.StyledGoGift />
+            <S.NavTitle>당첨 확인</S.NavTitle>
+          </S.NavTab>
+        </>
+      )}
 
       <S.NavTab to="/mypage">
         <S.StyledIoIosMore />

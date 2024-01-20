@@ -3,6 +3,7 @@ import { useLocation, NavLink } from 'react-router-dom';
 import { GoPerson, GoGift } from 'react-icons/go';
 import { IoIosMore } from 'react-icons/io';
 import { LiaFireSolid } from 'react-icons/lia';
+import { PiPencilSimpleLine } from 'react-icons/pi';
 
 export const NavBarWrapper = styled.nav`
   width: 99%;
@@ -57,6 +58,11 @@ export const StyledGoGift = styled(GoGift)`
 
 export const StyledIoIosMore = styled(IoIosMore)`
   font-size: 25px;
+  color: #514e57;
+`;
+
+export const StyledpiPencilSimpleLine = styled(PiPencilSimpleLine)`
+  font-size: 27px;
   color: #514e57;
 `;
 
