@@ -44,9 +44,24 @@ function Box() {
                   <S.RaffleContentsDate>
                     {product.raffleCreatedAt} ~ {product.raffleEndAt}
                   </S.RaffleContentsDate>
-                  <S.RaffleContentsPrice>
-                    {product.winningInfo}Point
-                  </S.RaffleContentsPrice>
+
+                  {/* {product.winningInfo === 'NONE' && (
+                    <>
+                      <S.RaffleNone>{product.winningInfo}</S.RaffleNone>
+                    </>
+                  )} */}
+
+                  {product.winningInfo === 'LOSE' && (
+                    <>
+                      <S.RaffleLose>미당첨</S.RaffleLose>
+                    </>
+                  )}
+
+                  {product.winningInfo === 'WINNING' && (
+                    <>
+                      <S.RaffleWinning>당첨</S.RaffleWinning>
+                    </>
+                  )}
                 </S.RaffleContentslist>
               </S.RaffleContents>
             </S.StyledLink>

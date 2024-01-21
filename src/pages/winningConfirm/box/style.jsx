@@ -71,12 +71,34 @@ export const RaffleContentsDate = styled.div`
   line-height: 16px;
 `;
 
-export const RaffleContentsPrice = styled.div`
+export const RaffleWinning = styled.div`
+  background-color: #5d00ff;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 2px 12px;
+  display: inline-block;
+  border-radius: 10px;
+  margin-top: 5px;
+`;
+
+export const RaffleLose = styled.div`
+  background-color: #9c9b9c;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 2px 12px;
+  display: inline-block;
+  border-radius: 10px;
+  margin-top: 5px;
+`;
+
+export const RaffleNone = styled.div`
   background-color: #5d00ff;
   color: #fff;
   font-size: 14px;
   line-height: 16px;
-  padding: 5px 15px;
+  padding: 3px 12px;
   display: inline-block;
   border-radius: 10px;
 `;
