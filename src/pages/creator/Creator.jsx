@@ -47,7 +47,7 @@ function Creator() {
 
         {/* 카테고리 */}
         <S.CreatorCategory>카테고리</S.CreatorCategory>
-        <S.CreatorListWrapper>
+        <S.CreatorCategoryWrapper>
           <S.CreatorItem>
             <S.CreatorProfile src={TwitchIcon} />
             <S.CreatorNickname>트위치</S.CreatorNickname>
@@ -72,7 +72,7 @@ function Creator() {
             <S.CreatorProfile src={AfreecaIcon} />
             <S.CreatorNickname>아프리카TV</S.CreatorNickname>
           </S.CreatorItem>
-        </S.CreatorListWrapper>
+        </S.CreatorCategoryWrapper>
       </S.CreatorContentWrapper>
     </S.CreatorWrapper>
   );

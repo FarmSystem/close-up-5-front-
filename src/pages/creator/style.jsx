@@ -71,6 +71,7 @@ export const CreatorSearchIcon = styled(CgSearchLoading)`
   font-size: 28px;
   color: #fff;
   z-index: 10;
+  cursor: pointer;
 `;
 
 export const CreatorListWrapper = styled.div`
@@ -101,6 +102,11 @@ export const CreatorNickname = styled.div`
 `;
 
 // 카테고리
+export const CreatorCategoryWrapper = styled.div`
+  margin-top: 16px;
+  display: flex;
+`;
+
 export const CreatorCategory = styled.div`
   margin-top: 20px;
   color: #dc8ae1;
