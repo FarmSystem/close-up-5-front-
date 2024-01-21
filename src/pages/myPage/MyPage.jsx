@@ -111,10 +111,9 @@ function MyPage() {
               </S.Button>
             </S.ButtonWrapper>
           </S.MyPageContent>
+          <S.LogoutButton>로그아웃</S.LogoutButton>
         </>
       )}
-
-      <S.LogoutButton>로그아웃</S.LogoutButton>
     </S.MyPageWrapper>
   );
 }
