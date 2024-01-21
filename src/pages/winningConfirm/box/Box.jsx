@@ -45,11 +45,11 @@ function Box() {
                     {product.raffleCreatedAt} ~ {product.raffleEndAt}
                   </S.RaffleContentsDate>
 
-                  {/* {product.winningInfo === 'NONE' && (
+                  {product.winningInfo === 'NONE' && (
                     <>
-                      <S.RaffleNone>{product.winningInfo}</S.RaffleNone>
+                      <S.RaffleNone>추첨중</S.RaffleNone>
                     </>
-                  )} */}
+                  )}
 
                   {product.winningInfo === 'LOSE' && (
                     <>

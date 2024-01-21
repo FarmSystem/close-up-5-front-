@@ -94,13 +94,14 @@ export const RaffleLose = styled.div`
 `;
 
 export const RaffleNone = styled.div`
-  background-color: #5d00ff;
+  background-color: #997ad7dc;
   color: #fff;
   font-size: 14px;
   line-height: 16px;
-  padding: 3px 12px;
+  padding: 2px 12px;
   display: inline-block;
   border-radius: 10px;
+  margin-top: 5px;
 `;
 
 export const RaffleContentslist = styled.div`
