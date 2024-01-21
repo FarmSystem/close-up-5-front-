@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { CgSearchLoading } from 'react-icons/cg';
 
 export const CreatorWrapper = styled.div`
   display: flex;
@@ -42,6 +43,7 @@ export const CreatorContentTitle = styled.div`
 `;
 
 export const CreatorSearchWrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,6 +62,15 @@ export const CreatorSearch = styled.input`
   padding: 10px;
   width: 300px;
   margin-bottom: 20px;
+`;
+
+export const CreatorSearchIcon = styled(CgSearchLoading)`
+  position: absolute;
+  right: 30px;
+  top: 4px;
+  font-size: 28px;
+  color: #fff;
+  z-index: 10;
 `;
 
 export const CreatorListWrapper = styled.div`

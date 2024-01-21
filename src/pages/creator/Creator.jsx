@@ -22,6 +22,7 @@ function Creator() {
       <S.CreatorContentWrapper>
         <S.CreatorContentTitle>크리에이터 검색</S.CreatorContentTitle>
         <S.CreatorSearchWrapper>
+          <S.CreatorSearchIcon />
           <S.CreatorSearch />
         </S.CreatorSearchWrapper>
         <S.CreatorContentTitle>
