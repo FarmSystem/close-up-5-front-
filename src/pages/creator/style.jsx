@@ -88,3 +88,13 @@ export const CreatorNickname = styled.div`
   font-weight: 700;
   line-height: 20px;
 `;
+
+// 카테고리
+export const CreatorCategory = styled.div`
+  margin-top: 20px;
+  color: #dc8ae1;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  margin-left: 12px;
+`;
